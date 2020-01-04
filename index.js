@@ -24,16 +24,44 @@ function next(node, collection) {
     return collection[nextAddress];
 }
 
-function nodeAt(index) {
-    return index;
+function nodeAt(index, linkedList, collection) {
+    let node = headNode(linkedList, collection);
+    for (let i = 0; i < index; i++){
+      node = next(node, collection);
+    }
+    return node;
 }
 
-// function nodeAt(collection, index) {
-//   let result = collection.filter(obj => {
-//       return obj.
-//   })
-// }
+function addressAt(index, linkedList, collection) {
+  if (index === 0) {
+    return linkedList;
+  } else {
+      let node = nodeAt(index - 1, linkedList, collection);
+      return node["next"];
+  }
+}
 
-// var result = jsObjects.filter(obj => {
-//     return obj.b === 6
-//   })
+function indexAt(node, collection, linkedList) {
+    let currentNode = headNode(linkedList, collection);
+    let indexCounter = 0;
+
+    while (currentNode != node){
+        currentNode = next(currentNode, collection);
+        indexCounter = indexCounter + 1;
+    }
+
+    return indexCounter;
+}
+
+function insertNodeAt(index, newNodeAddress, linkedList, collection){
+    let previousNode = nodeAt(index - 1, linkedList, collection);
+    let subsequentNode = nodeAt(index, linkedList, collection);
+  
+    let previousNodeIdx = indexAt(previousNode, collection, linkedList)
+    let subsequentNodeIdx = indexAt(subsequentNode, collection, linkedList)
+    let previousNodeAddress = addressAt(previousNode, linkedList, collection)
+    let subsequentNodeAddress = addressAt(subsequentNode, linkedList, collection)
+    previousNode.next = newNodeAddress
+    let newNode = collection[newNodeAddress]
+    newNode.next = subsequentNodeAddress
+}
