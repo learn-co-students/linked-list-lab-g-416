@@ -22,14 +22,16 @@ function nodeAt(index, list, collection) {
 function addressAt(index, list, collection) {
   if (index === 0) {
     return list
+  } else {
+    let previousNode = nodeAt(index - 1, list, collection)
+    return previousNode.next
+    // let address = list
+    // for (let i=0; i < index; i++) {
+    //   let node = collection[address]
+    //   address = node.next
+    // }
+    // return address
   }
-
-  let address = list
-  for (let i=0; i < index; i++) {
-    let node = collection[address]
-    address = node.next
-  }
-  return address
 }
 
 function indexAt(node, collection, list) {
