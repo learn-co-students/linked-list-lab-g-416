@@ -34,10 +34,23 @@ function indexAt(node, collection, list) {
   return ni;
 }
 
-function insertNodeAt(index, key, list, collection) {
-
+function insertNodeAt(index, newNodeAddress, list, collection) {
+  let prevNode = nodeAt(index - 1, list, collection)
+  let nextNode = nodeAt(index, list, collection)
+  let nextNodeAddress = addressAt(nextNode, list, collection)
+  prevNode.next = newNodeAddress
+  let newNode = collection[newNodeAddress]
+  newNode.next = nextNodeAddress
 }
 
 function deleteNodeAt(index, list, collection) {
+  let previousNode;
+  let currentNode = headNode(list, collection);
 
+  for(let i = 0; i < index; i++){
+     previousNode = currentNode
+     currentNode = next(currentNode, collection);
+  }
+  
+  previousNode.next = currentNode.next
 }
