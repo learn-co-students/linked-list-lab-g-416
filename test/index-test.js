@@ -96,7 +96,8 @@ describe('#insertNodeAt', function() {
       ajhsak: newNode}
     let linkedList = 'whana'
     insertNodeAt(1, 'ajhsak', linkedList, collection)
-    expect(newNode.next).toEqual('rkjasj')
+    // expect(newNode.next).toEqual('rkjasj')
+    expect(collection['ajhsak'].next).toEqual('rkjasj')
   })
 
   it("should set the next property of the node previous to the inserted node", function() {
@@ -125,6 +126,7 @@ describe('#insertNodeAt', function() {
     let linkedList = 'whana'
 
     insertNodeAt(1, 'ajhsak', linkedList, collection)
+    newNode = collection['ajhsak']
     expect(nodeAt(1, linkedList, collection)).toEqual(newNode)
     expect(nodeAt(2, linkedList, collection)).toEqual(secondNode)
   });
