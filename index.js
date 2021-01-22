@@ -18,3 +18,15 @@ function nodeAt(index, head, collection) {
     }
     return node;
 }
+
+function addressAt(index, head, collection) {
+    let node = collection[head];
+    if (index === 0) {
+        return head;
+    } else {
+        for (let i = 0; i < index - 1; i++) {
+            node = next(node, collection);
+        }
+        return node['next'];
+    }
+}
