@@ -40,3 +40,10 @@ function indexAt(targetNode, collection, head) {
     }
     return index
 }
+
+function insertNodeAt(index, newAddress, head, collection) {
+    let newNode = collection[newAddress];
+    let priorNode = nodeAt(index - 1, head, collection);
+    newNode.next = priorNode.next
+    priorNode.next = newAddress;
+}
