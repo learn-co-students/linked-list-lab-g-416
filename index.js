@@ -30,3 +30,13 @@ function addressAt(index, head, collection) {
         return node['next'];
     }
 }
+
+function indexAt(targetNode, collection, head) {
+    let index = 0;
+    let node = collection[head];
+    while (node !== targetNode) {
+        node = next(node, collection);
+        index++
+    }
+    return index
+}
