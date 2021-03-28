@@ -27,7 +27,7 @@ function addressAt(idx, headAddress, collection) {
         node = next(node, collection)
     }
     return address
-}
+} 
 
 function indexAt(node, collection, headAddress) {
     let  searchNode = collection[headAddress]
